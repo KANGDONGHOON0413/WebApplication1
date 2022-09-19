@@ -1,0 +1,30 @@
+﻿@page "/counter"
+
+<h1>Counter</h1>
+
+<div class=" alert alert-primary">Count1</div>
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Count+</button>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}
+<div class=" alert alert-danger">Count2</div>
+<p>Current count: <input type="text" @bind="CurrentCount2" /></p>
+<p>Current count: @CurrentCount2</p>
+<button class="btn btn-primary" @onclick="IncrementCount2">Count++</button>
+
+@code{
+    int temp = 0;
+    int CurrentCount2 { get => temp; set { temp = value; currentCount += value; } }
+    private void IncrementCount2()
+    {
+        CurrentCount2++;
+    }
+}
